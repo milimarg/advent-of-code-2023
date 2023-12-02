@@ -5,4 +5,4 @@
 | Day | Number of tasks done | Language used |
 |-----|----------------------|---------------|
 | 1   | ⭐⭐                   | Python        |
-| 2   | ⭐                    | Bash          |
+| 2   | ⭐⭐                   | Bash          |
