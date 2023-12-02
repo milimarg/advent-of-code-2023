@@ -1,1 +1,8 @@
 # advent-of-code-2023
+
+### Completion
+
+| Day | Number of tasks done | Language used |
+|-----|----------------------|---------------|
+| 1   | ⭐⭐                   | Python        |
+| 2   | ⭐                    | Bash          |
