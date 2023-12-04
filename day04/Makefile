@@ -1,5 +1,5 @@
 NAME	=	test.jar
-SRC		=	task01.kt
+SRC		=	task02.kt
 
 all:
 	kotlinc $(SRC) -include-runtime -d $(NAME)
