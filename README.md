@@ -8,4 +8,4 @@
 | 2   | ⭐⭐                   | Bash          |
 | 3   | ⭐⭐                   | PHP           |
 | 4   | ⭐⭐                   | Kotlin        |
-| 5   | ⭐                    | Javascript    |
+| 5   | ⭐⭐                   | Javascript    |
