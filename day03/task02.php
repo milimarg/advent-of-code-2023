@@ -19,7 +19,7 @@ function is_char_a_symbol($char) {
 
 function parse_number($array, $x, $y, $len) {
     $number = 0;
-    echo "LEN = $len<br>";
+    echo "len = $len<br>";
     for ($i = 0; $i < $len; $i++) {
         $char = $array[$y][$x + $i];
         if (is_numeric($char)) {
