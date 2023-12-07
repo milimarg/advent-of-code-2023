@@ -74,11 +74,13 @@ with open('./input.txt') as file:
         for j in range(0, n - i - 1):
             hand1 = hands[j]
             hand2 = hands[j + 1]
-            #if i != j and hand1["strength"] == hand2["strength"]:
-            print(get_strongest_hand(hand1["hand"], hand2["hand"]), hand1["hand"], hand2["hand"])
-            if get_strongest_hand(hand1["hand"], hand2["hand"]) == hand1:
-                hands[j], hands[j + 1] = hands[j + 1], hands[j]
-        print("\n")
+            if i != j and hand1["strength"] == hand2["strength"]:
+                if get_strongest_hand(hand1["hand"], hand2["hand"]) == hand1["hand"]:
+                    hands[j], hands[j + 1] = hands[j + 1], hands[j]
 
-for hand in hands:
-        print(hand)
+total = 0
+
+for index, hand in enumerate(hands):
+        total += int(hand["bid"]) * (index + 1)
+
+print("total = ", total)
