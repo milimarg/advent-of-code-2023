@@ -10,4 +10,4 @@
 | 4   | ⭐⭐                   | Kotlin        |
 | 5   | ⭐⭐                   | Javascript    |
 | 6   | ⭐⭐                   | Rust          |
-| 7   | ⭐                    | Go            |
+| 7   | ⭐⭐                   | Go            |
