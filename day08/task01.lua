@@ -5,7 +5,9 @@ function file_exists(file)
 end
 
 function lines_from(file)
-    if not file_exists(file) then return {} end
+    if not file_exists(file) then
+        return {}
+    end
     local lines = {}
     for line in io.lines(file) do
         lines[#lines + 1] = line
@@ -26,25 +28,60 @@ for k, v in pairs(lines) do
 end
 
 local order = fileData[1][1]
+local skipKey = 2
+
+for k, v in pairs(fileData) do
+    if (k > skipKey) then
+        fileData[k][3] = v[3]:gsub("%(", ""):gsub("%,", "")
+        fileData[k][4] = v[4]:gsub("%)", "")
+    end
+end
+
+for k, v in pairs(fileData) do
+    if (k > skipKey) then
+        for k2, v2 in pairs(fileData) do
+            if (k2 > skipKey) then
+                if (v[1] == v2[3]) then
+                    fileData[k2][3] = k
+                end
+                if (v[1] == v2[4]) then
+                    fileData[k2][4] = k
+                end
+            end
+        end
+    end
+end
+
+local currentKey = skipKey + 1
+
+for k, v in pairs(fileData) do
+    if v[1] == "AAA" then
+        currentKey = k
+        break
+    end
+end
+
+local directionKey = 0
+local breaker = 0
+local stepsNumber = 0
 
 print("order =", order)
 
-local dict = {}
-
-for k, v in pairs(fileData) do
-    if (k > 2) then
-        for k2, v2 in pairs(fileData[k]) do
-            if (k2 == 1) then
-                dict[v2] = {}
-            end
-            if (k2 == 3 or k2 == 4) then
-                --table.insert(dict[v2], k2)
-            end
-            --print(k2, " -> ", v2)
-            --for key, token in pairs(dict[v2]) do
-            --    print(key, " -> ", token)
-            --end
+while breaker == 0 do
+    for i = 1, #order do
+        local c = order:sub(i, i)
+        if (c == 'L') then
+            directionKey = 3
         end
-        print("\n")
+        if (c == 'R') then
+            directionKey = 4
+        end
+        currentKey = fileData[currentKey][directionKey]
+        stepsNumber = stepsNumber + 1
+        if fileData[currentKey][1] == "ZZZ" or stepsNumber >= 20000 then
+            breaker = 1
+        end
     end
 end
+
+print("END...", stepsNumber)
