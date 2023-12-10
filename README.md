@@ -11,3 +11,4 @@
 | 5   | ⭐⭐                   | Javascript    |
 | 6   | ⭐⭐                   | Rust          |
 | 7   | ⭐⭐                   | Go            |
+| 8   | ⭐                    | Lua           |

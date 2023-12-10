@@ -65,8 +65,6 @@ local directionKey = 0
 local breaker = 0
 local stepsNumber = 0
 
-print("order =", order)
-
 while breaker == 0 do
     for i = 1, #order do
         local c = order:sub(i, i)
@@ -78,7 +76,7 @@ while breaker == 0 do
         end
         currentKey = fileData[currentKey][directionKey]
         stepsNumber = stepsNumber + 1
-        if fileData[currentKey][1] == "ZZZ" or stepsNumber >= 20000 then
+        if fileData[currentKey][1] == "ZZZ" then
             breaker = 1
         end
     end
