@@ -1,0 +1,1 @@
+echo "source(\"$1\")" | R --vanilla
