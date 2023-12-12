@@ -1,7 +1,8 @@
 FC	=	gfortran
 
 SRC	=	main.f90 \
-		galaxymodule.f90
+		galaxymodule.f90 \
+		expansionmodule.f90
 
 NAME	=	test
 

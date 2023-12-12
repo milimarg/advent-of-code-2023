@@ -14,7 +14,7 @@ contains
         open(unit = file_unit, file = filename, status = "old", action = "read", iostat = statut)
 
         if (statut /= 0) then
-            print *, "Couldn't open file"
+            print *, "Couldn't open file (3)"
             stop
         end if
 
@@ -44,7 +44,7 @@ contains
         open(unit = file_unit, file = filename, status = "old", action = "read", iostat = statut)
 
         if (statut /= 0) then
-            print *, "Couldn't open file"
+            print *, "Couldn't open file (4)"
             stop
         end if
 
@@ -58,19 +58,14 @@ contains
             do index = 1, lineLen
                 current_char = line(index:index)
                 if (current_char == "#") then
-                    if (moveIndex > 2) then
-                        print *, "x =", index - last_x, "y =", j - last_y
-                    end if
                     array(moveIndex) = index
                     array(moveIndex + 1) = j
                     moveIndex = moveIndex + 2
                     last_x = index
                     last_y = j
-                    !print *, index, j
                 else
                 end if
             end do
-            print *, ""
             j = j + 1
         end do
 

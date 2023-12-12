@@ -1,17 +1,19 @@
 program main
+    use ExpansionModule
     use GalaxyModule
     implicit none
 
     character (len = 100) :: filename
     integer :: result, galaxyNumber, i, j, distance, temp1, temp2, x1, x2, y1, y2, sum
+    character, dimension(:,:), allocatable :: matrix
     integer, dimension (:), allocatable :: array
 
     filename = "./input.txt"
 
+    result = getEmptyRowsCols(filename, matrix)
+
     galaxyNumber = getGalaxyNumber(filename)
-
     allocate(array(galaxyNumber * 2))
-
     call registerGalaxies(filename, array)
 
     sum = 0
