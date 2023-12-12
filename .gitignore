@@ -5,3 +5,4 @@ META-INF
 *.jar
 *.json
 test
+*.out
