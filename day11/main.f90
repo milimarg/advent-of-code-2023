@@ -27,11 +27,9 @@ program main
                 y2 = array(j + 1)
                 distance = abs(x2 - x1) + abs(y2 - y1)
                 sum = sum + distance
-                print *, temp1, "<->", temp2, "=", distance
             end if
             temp2 = temp2 + 1
         end do
-        print *, ""
         temp1 = temp1 + 1
     end do
 

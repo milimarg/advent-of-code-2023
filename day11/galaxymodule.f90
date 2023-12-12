@@ -26,12 +26,10 @@ contains
             lineLen = len_trim(line)
             do index = 1, lineLen
                 current_char = line(index:index)
-                !write (*, "(A)", advance = "no"), current_char
                 if (current_char == "#") then
                     number = number + 1
                 end if
             end do
-            !print *, ""
         end do
         close(file_unit)
     end function getGalaxyNumber
@@ -40,7 +38,7 @@ contains
         character (len = 100), intent(in) :: filename
         character (len = 100) :: line
         character (len = 1) :: current_char
-        integer :: file_unit, statut, index, j, moveIndex, result, lineLen
+        integer :: file_unit, statut, index, j, moveIndex, result, lineLen, last_x, last_y
         integer, dimension (:), allocatable, intent(inout) :: array
 
         open(unit = file_unit, file = filename, status = "old", action = "read", iostat = statut)
@@ -60,12 +58,19 @@ contains
             do index = 1, lineLen
                 current_char = line(index:index)
                 if (current_char == "#") then
+                    if (moveIndex > 2) then
+                        print *, "x =", index - last_x, "y =", j - last_y
+                    end if
                     array(moveIndex) = index
                     array(moveIndex + 1) = j
                     moveIndex = moveIndex + 2
+                    last_x = index
+                    last_y = j
+                    !print *, index, j
                 else
                 end if
             end do
+            print *, ""
             j = j + 1
         end do
 
