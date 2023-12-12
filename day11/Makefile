@@ -1,5 +1,19 @@
+FC	=	gfortran
+
+SRC	=	main.f90 \
+		galaxymodule.f90
+
 NAME	=	test
-SRC		=	task01.f95
 
 all:
-	gfortran $(SRC) -o $(NAME)
+	$(FC) -o $(NAME) $(SRC)
+
+clean:
+	rm -f *.o
+
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re
