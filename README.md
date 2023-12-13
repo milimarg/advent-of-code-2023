@@ -14,4 +14,4 @@
 | 8   | ⭐⭐                   | Lua           |
 | 9   | ⭐⭐                   | R             |
 | 10  | ⭐⭐ (please help me)  | Julia         |
-| 11  | ⭐                    | Python        |
+| 11  | ⭐⭐                   | Python        |
