@@ -1,74 +1,39 @@
-from itertools import permutations
+import re
+from itertools import combinations
 
 with open("./input.txt") as f:
     lines = f.readlines()
 
 
-def overall_len_check(orders_, array):
-    for i, x in enumerate(array):
-        if len(x) != orders_[i]:
-            return False
-    return True
+def is_this_fucking_arrangement_correct(record, expected_group_sizes):
+    found_groups = list(filter(None, re.findall(r'#*', record)))
+    found_groups_sizes = [len(x) for x in found_groups]
+    return found_groups_sizes == expected_group_sizes
 
 
+arrangements = 0
 for line in lines:
-    arrangement = 0
+    temp = 0
     template = line.split(" ")
     record = template[0]
-    orders = [int(x) for x in template[1].split(",")]
+    a = ""
+    for i in range(5):
+        a += record
+        if i < 5 - 1:
+            a += "?"
+    record = a
+    orders = template[1]
+    orders_sizes = [int(x) for x in orders.split(",")] * 5
 
-    print("record", record)
-    #print("orders", orders)
+    springs_temp_ahh = sum(orders_sizes) - record.count("#")
+    positions_idk = [i for i, character in enumerate(record) if character == "?"]
 
-    test_split = record.split(".")
-    test_split = list(filter(None, test_split))
+    for element in combinations(positions_idk, springs_temp_ahh):
+        record_temp = list(record)
+        for position in element:
+            record_temp[position] = "#"
+        if is_this_fucking_arrangement_correct("".join(record_temp), orders_sizes):
+            temp += 1
+    arrangements += temp
 
-    if len(test_split) == len(orders):
-        for i, element in enumerate(test_split):
-            if len(element) == orders[i]:
-                print("found", test_split[i])
-                arrangement += 1
-                test_split[i] = "."
-                orders[i] = -1
-    else:
-        pass
-
-    test_split = list(filter(lambda a: a != ".", test_split))
-    orders = list(filter(lambda a: a != -1, orders))
-
-    print("orders", orders)
-    print("test_split", test_split)
-    print("----------\n")
-
-    if len(test_split) == 0:
-        continue
-
-
-
-
-    #test = permutations(test_split[0])
-
-    #for perm in set(list(test)):
-    #    question_template = test_split.copy()
-    #    question_template.pop(0)
-    #    perm = list(perm)
-    #    perm_len = len(perm)
-    #    perm_split = "".join(perm).split(".")
-    #    perm_split = list(filter(None, perm_split))
-#
-    #    for index, element in enumerate(perm_split):
-    #        question_template.insert(0 + index, element)
-#
-    #    # print("perm =", perm, "len =", perm_len, "perm_split =", perm_split)
-    #    if len(question_template) != len(orders):
-    #        continue
-    #    print("question_template", question_template)
-    #    if overall_len_check(orders, question_template):
-    #        arrangement += 1
-    #    # print(".".join(question_template).replace("?", "#"))
-#
-    #print("arrangement =", arrangement)
-
-
-
-    #break
+print("END...", arrangements)
