@@ -16,14 +16,8 @@ for line in lines:
     temp = 0
     template = line.split(" ")
     record = template[0]
-    a = ""
-    for i in range(5):
-        a += record
-        if i < 5 - 1:
-            a += "?"
-    record = a
     orders = template[1]
-    orders_sizes = [int(x) for x in orders.split(",")] * 5
+    orders_sizes = [int(x) for x in orders.split(",")]
 
     springs_temp_ahh = sum(orders_sizes) - record.count("#")
     positions_idk = [i for i, character in enumerate(record) if character == "?"]
