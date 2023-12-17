@@ -17,3 +17,4 @@
 | 11..12 | ⭐⭐                   | Python        |
 | 14     | ⭐⭐                   | Python        |
 | 15     | ⭐⭐                   | Rust / Python |
+| 17     | ⭐⭐                   | Python        |
