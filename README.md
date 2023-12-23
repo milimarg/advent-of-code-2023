@@ -16,4 +16,4 @@
 | 10     | ⭐⭐ (please help me)  | Julia         |
 | 11..14 | ⭐⭐                   | Python        |
 | 15     | ⭐⭐                   | Rust / Python |
-| 16..21 | ⭐⭐                   | Python        |
+| 16..22 | ⭐⭐                   | Python        |
